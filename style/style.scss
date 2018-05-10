@@ -1,0 +1,179 @@
+$primary-color : #339933;
+$bg-color: #000000;
+  
+@font-face { 
+	font-family:  console;
+	src:  url('../src/fonts/Glass_TTY_VT220.ttf');
+}
+
+body{
+ 
+	color:  $primary-color;
+	font-family: console;
+  background-color: #060606;
+	margin:  0;
+	padding:  0;
+}
+
+header {
+	text-align: center;
+	font-size:  1.1em;
+	letter-spacing: 1.9em;
+	font-weight: 900;
+  background-color: $primary-color;
+  opacity: 0.6;
+	color:  $bg-color;
+	margin-bottom:  5em;
+}
+
+container{
+  
+  position: relative;
+  display: flex;
+  justify-content:center;
+  align-content: center;
+  animation: flick 0.1s 0s cubic-bezier(0,1,1,0) infinite ;
+}
+
+.console {
+ 
+	position:  relative;
+  width:  80%;
+  max-width: 992px;
+	display:  grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1.5fr 1fr;
+  grid-gap: 10px 10px;
+  color: $primary-color;
+	border:  1px dotted $primary-color;
+	background-color:  $bg-color;
+	box-shadow: inset 0px 0px 25px 0px $primary-color;
+  border-radius: 8px;
+  padding: 30px;
+  transform: scale(0.025,0.025);
+  transform-origin: 0 0;
+  animation: 
+    blink 0.4s 0s linear forwards,
+    appear 0.5s 0.4s linear forwards
+}
+
+.console a{
+ color: $primary-color;
+}
+
+.main-screen{ 
+  align-self: center;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  font-size: 3em;
+  background-image: url('/src/images/paski.png');
+  overflow: hidden;
+	cursor: pointer;
+}
+.cursor {
+  display: inline-block;
+  width: 20px;
+  height: 45px;
+  color: $bg-color;
+  background-color: $primary-color;
+  background-image: url("/src/images/paski.png");
+  cursor: pointer;
+  animation: cursor_blink 1s infinite;
+}
+.photo-wraper {
+  overflow:  hidden;
+  position: relative;
+
+} 
+.photo-wraper figure {
+ margin: 0;
+ padding: 0;
+}
+
+#my-photo{
+  transform: translateY(110%);
+  animation: photo_appear 1s 2s steps(10,end) forwards;
+  width: 100%;
+  height: 100%;
+}
+#overlay{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/src/images/paski.png');
+}
+.data{
+  font-size: 1.4em;
+  width: 100%;
+  height: 100%;
+}
+
+.console:after, .console:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top:0px;
+  opacity: 0.3;
+  box-shadow: 0 0 3px  $primary-color;
+}
+.console:before{
+ animation: refresh 0.7s infinite linear;
+}
+.console:after{
+ animation: refresh 1.6s  0.5s infinite linear;
+}
+
+@keyframes blink{
+
+  80% {background-color: $primary-color}  
+  100% {background-color: $bg-color} 
+}
+
+@keyframes appear{
+
+  50%  {  transform: scale(1, 0.05) }
+  100% {  transform: scale(1, 1)    }
+}
+
+@keyframes flick{
+
+  0%  {  opacity: 0.8  }
+  25% {  opacity: 1    }
+  50% {  opacity: 0.7  }
+  75% {  opacity: 0.9 }
+}
+
+@keyframes photo_appear{
+
+  100% {   transform: translateY(0);   }
+}
+@keyframes cursor_blink{
+
+  50% {   opacity:0.1 }
+}
+
+@keyframes refresh{
+
+  100% {  /* transform: translateY(100%) */
+          top:100%;
+       }
+}
+
+
+
+////////// Media Queries ////
+@media only screen and (max-width: 800px) {
+ .console{
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows:  auto auto auto;
+ }
+
+ .main-screen{
+   grid-row-start:3;
+   grid-row-end: 4; 
+ }
+}

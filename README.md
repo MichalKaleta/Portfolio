@@ -1,14 +1,14 @@
 # webpack-react-redux-boilerplate
 
-<h2>Basic webpack confirguration for React with Redux developement. </h2>
+<h2>Front-end Portfolio </h2>
 
-<h3>includes:</h3> 
+<h3>Technologies</h3> 
 <ul>
-  <li>basic file structure</li>
-  <li>webpack , webpack-dev-server</li>
-  <li>react, react-dom, redux, react-redux</li>
-  <li>loaders and plugins for  : babel ,css , html </li>
+  <li>CSS Grid for RWD</li>
+  <li>CSS animations</li>
+  <li>JQuery/li>
 </ul>
+
 <h3>scripts:</h3>
 <ul>
   <li><code>npm run serve</code> starts dev server on localhost:8080</li>
