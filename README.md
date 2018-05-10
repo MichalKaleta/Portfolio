@@ -1,12 +1,10 @@
-# webpack-react-redux-boilerplate
-
-<h2>Front-end Portfolio </h2>
+# Front-end Portfolio
 
 <h3>Technologies</h3> 
 <ul>
   <li>CSS Grid for RWD</li>
   <li>CSS animations</li>
-  <li>JQuery/li>
+  <li>JQuery</li>>
 </ul>
 
 <h3>scripts:</h3>
