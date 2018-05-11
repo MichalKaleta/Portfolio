@@ -1,18 +1,14 @@
 
-  var screen_text = `Login ...OK!<
-                     Loading ............ DONE!<
-                     80_style.css ....... DONE!< 
-                     Update avalible: modern style<
-                     Restart Server?<
-                     ..............<
-                     Press Any Key `,
+  var screen_text = `Login ...OK!
+<Loading ............ DONE!<80_style.css ....... DONE!
+< Update avalible: modern style<
+Restart Server?<
+..............
+<Press Any Key `,
 
-      data_text   =  `user: <
-                      Michal Kaleta <<
-                      phone nr: 
-                      <696 471 251 <<
-                      e-mail: < 
-                      mic.kaleta@gmail.com`,
+      data_text   =  `user: <Michal Kaleta <<
+                      phone nr: <696 471 251 <<
+                      e-mail: < mic.kaleta@gmail.com`,
       blip = $(".blip"),
       szerokosc_ekranu = $(document).width(),
       kursor_tag = '<div class="cursor">Y</div>',
