@@ -7,7 +7,6 @@ $bg-color: #000000;
 }
 
 body{
- 
 	color:  $primary-color;
 	font-family: console;
   background-color: #060606;
@@ -32,7 +31,7 @@ container{
   display: flex;
   justify-content:center;
   align-content: center;
-  animation: flick 0.1s 0s cubic-bezier(0,1,1,0) infinite ;
+  animation: flick 0.2s 0s cubic-bezier(0,1,1,0) infinite ;
 }
 
 .console {
@@ -52,15 +51,33 @@ container{
   padding: 30px;
   transform: scale(0.025,0.025);
   transform-origin: 0 0;
+  transition: 0.5s all ;
   animation: 
     blink 0.4s 0s linear forwards,
     appear 0.5s 0.4s linear forwards
 }
-
-.console a{
+.console:after, .console:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top:0px;
+  opacity: 0.3;
+  box-shadow: 0 0 3px  $primary-color;
+}
+.console:before{
+ animation: refresh 0.7s infinite linear;
+}
+.console:after{
+ animation: refresh 1.6s  0.5s infinite linear;
+}
+.console a {
  color: $primary-color;
 }
+.console.turned-off {
 
+  animation: 0.5s turn-off;
+}
 .main-screen{ 
   align-self: center;
   grid-row-start: 1;
@@ -68,8 +85,10 @@ container{
   font-size: 3em;
   background-image: url('/src/images/paski.png');
   overflow: hidden;
-	cursor: pointer;
+  cursor: pointer;
 }
+
+
 .cursor {
   display: inline-block;
   width: 20px;
@@ -110,21 +129,7 @@ container{
   height: 100%;
 }
 
-.console:after, .console:before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  top:0px;
-  opacity: 0.3;
-  box-shadow: 0 0 3px  $primary-color;
-}
-.console:before{
- animation: refresh 0.7s infinite linear;
-}
-.console:after{
- animation: refresh 1.6s  0.5s infinite linear;
-}
+
 
 @keyframes blink{
 
@@ -136,6 +141,10 @@ container{
 
   50%  {  transform: scale(1, 0.05) }
   100% {  transform: scale(1, 1)    }
+}
+@keyframes turn-off{
+  0% {  transform: scale(1, 1)    }
+  100% {  transform: scale(0, 0)    }
 }
 
 @keyframes flick{
@@ -157,12 +166,8 @@ container{
 
 @keyframes refresh{
 
-  100% {  /* transform: translateY(100%) */
-          top:100%;
-       }
+  100% {   top:100%;   }
 }
-
-
 
 ////////// Media Queries ////
 @media only screen and (max-width: 800px) {

@@ -1,5 +1,5 @@
 
-  var screen_text = `Login ...OK!
+export var screen_text = `Login ...OK!
 <Loading ............ DONE!<80_style.css ....... DONE!
 < Update avalible: modern style<
 Restart Server?<
@@ -10,13 +10,13 @@ Restart Server?<
                       phone nr: <696 471 251 <<
                       e-mail: < mic.kaleta@gmail.com`,
       blip = $(".blip"),
-      szerokosc_ekranu = $(document).width(),
-      kursor_tag = '<div class="cursor">Y</div>',
-      cursor = $(kursor_tag),
+      cursor_tag = '<div class="cursor">Y</div>',
+      cursor = $(cursor_tag),
       humm = $('.humm'),
-      console1 = $('.console'),
+      main_console = $('.console'),
       main_screen = $('.main-screen'),
-      data = $('.data');
+      data = $('.data'),
+      animation_complete = false;
 
   humm.prop('volume', 0.1);
   humm.trigger('play');
@@ -34,9 +34,17 @@ Restart Server?<
         setTimeout(function() {
             print(++i);
         }, 20);
-    } else
+    } else{
         main_screen.append(cursor);
+        animation_complete =true;
+      }
     };
 
- 
-
+  export function turn_off_console() {
+    /*   blip.trigger('play');
+      main_screen.fadeOut(600);
+      data.fadeOut(600);
+      $('img , .overlay').fadeOut(600) */
+      main_console.addClass('turned-off');
+  
+    }
