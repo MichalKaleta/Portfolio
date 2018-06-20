@@ -91,16 +91,21 @@ header {
     right:0px;
     width: 200px;
     padding: 13px;
-    background:linear-gradient( #FDF8FE 80%,  #f6eded) ;
+    background: linear-gradient(to bottom ,#faf9f9 80%,#d3cddd);
     font-family: handWrite;  
     font-weight: 800;
     font-size: 1.3em;
     letter-spacing: 0.12em;
-/*     box-shadow: -2px 5px 5px hsl(59, 19 , 20); */
-    box-shadow: -2px 4px 5px rgba(0, 0 , 0, 0.6);
+    box-shadow: -3px 4px 5px rgba(70, 40 , 40, 0.6); 
+  /*   border-bottom: 2px solid rgb(80, 80 , 80);  */
     transition: 0.7s all;
     transform-origin: 105% 0;
-    transform: rotate(2.5deg); 
+    transform: rotate(2.5deg);  
+    backface-visibility: hidden;
+    
+    figure{
+      margin: 0;
+    }
 
     address{
       margin-top: 10px;
@@ -145,15 +150,11 @@ container {
   background-image: url("/src/images/egg-shell.png") ;
 }
 
-section {
+#about_me {
+  opacity: 0;
   font-size: 1.2em;
   font-family: Georgia, Serif;
-  width: 100%;
   text-align: justify;
-}
-
-#opis {
-  opacity: 0;
   width: 75%;
   margin: 200px 0 240px 0;
   column-count: 3;
@@ -163,18 +164,28 @@ section {
   padding: 50px 25px;
   mix-blend-mode: multiply; 
 
+/*     p{
+      background-color: #feee;
+      mix-blend-mode: none;
+      opacity:1;
+      box-shadow: 1px 1px 2px #444;
+      transform: rotate(1deg);
+
+    } */
     img {
-      display: inline-block;
-      width: 90%;
-      filter: sepia(20%) grayscale(0.3) contrast(1) opacity(0.8);
-      box-shadow: 4px 1px 3px 0px #444444;
+      display: block;
+      width: 96%;
+      filter: sepia(20%) grayscale(0.3) contrast(1) opacity(0.85);
+      /* box-shadow: 4px 1px 3px 0px #444444; */
+      background-color: #fff;
+     /*  border: 2px solid #888; */
       transform: rotate3d(0, 0, 1, -1deg);
-      padding: 2%;
+      padding: 2.5%;
     }
     
     h3 {
       font-size: 3em;
-      margin: -0.8em 0 0.4em -0.3em;
+      margin: -0.7em 0 0.48em -0.3em;
       border-left: 12px dotted #888;
       padding-left: 10px;
     }
@@ -182,22 +193,21 @@ section {
     h4 {
       font-size: 1.6em;
       word-wrap: break-word;
-      margin: 0.4em 0 0.4em 0;
+      margin: 0.4em 0 -0.5em 0;
     }
     
     .rotation {
       transform: rotateY(360deg);
     }
-    
-    .polski {
-      opacity: 0;
-      display: none;
-    }
-    
-    .english {
-      display: none;
-      opacity: 0;
-    }
+
+   &.show{
+      display: block;
+      opacity:1;
+   } 
+   &.hide {
+     display: none;
+     opacity: 0;
+   }   
 }
 
 #skills {
@@ -214,7 +224,7 @@ section {
 
 #wrap {
   position: relative; 
-  max-width: 900px;
+  max-width: 1100px;
   height: 240px;
   display: flex;
   flex-wrap: wrap;
@@ -222,14 +232,10 @@ section {
   align-content: center;
 
     img {
-      position: relative;
-      top: 0;
-      right: 70px;
       width: 13%;
       height: 160px;
-      margin: 0 1%;
+      margin: 2% 1%;
       opacity: 0;
-      transform-origin: 50% 50% 0px;
       transform: translateX(-150px);
       transition: all 0.8s;
       filter:  drop-shadow(4px 6px 2px #444) grayscale(30%);
@@ -237,19 +243,24 @@ section {
         &.pokaz {
             transform: translateX(0);
             opacity: 1; 
+           
+        } 
+
+        &.set_transition {
+          transition: all 0.25s;
         } 
 
         &:hover {
             filter: drop-shadow( 4px 12px 4px #484848) grayscale(15%);
-            backface-visibility: visible; 
-            transform:  perspective(400px) rotate3d(0, 1, 0, 20deg) scale(1.05)  translateY(-30px)
+            backface-visibility: visible;          
+            transform:  perspective(400px) rotateY(13deg) scale(1.05)  translateY(-30px)
         }
     }
 }
 
 @media only screen and (max-width: 950px) {
 
-    #opis {
+    #about_me {
       width: 95%;
       font-size: 1.5em;
       column-count: 2;

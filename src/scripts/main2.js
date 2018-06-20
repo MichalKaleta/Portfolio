@@ -2,20 +2,19 @@ export default function(){
 
   $(document).ready(function() {
   
-      var $h1 = $('h1'),
+    const $h1 = $('h1'),
           $h2 = $('h2'),
-          polaroid = $('#polaroid'),
-          polaroid_right = parseInt( polaroid.css('right'), 10  ),
-          h2_font = 0,
-          h1_font = 0,
+          $polaroid = $('#polaroid'),
+          $skill_images = $('#skills img');
+     var  h1_font = 0,
           h1_margin = parseInt(  $('header h1').css('margin-top'), 10  ),
           once_executed =false;
-
+          
     /*   $('header').fadeIn().css({
           display: 'flex'
       }); */
 
-    function start() {
+    (function start() {
       $h1.show();
       $h2.show();
 
@@ -40,12 +39,12 @@ export default function(){
               });
           });
       }
-    };
+    }());
 
       function czytaj() {
 
           h1_font = parseInt($('header h1').css('fontSize'), 10);
-          h2_font = parseInt($('header h2').css('font-size'), 10);
+        /*   h2_font = parseInt($('header h2').css('font-size'), 10); */
       };
 
       function naglowek($win_scroll) {
@@ -67,19 +66,22 @@ export default function(){
           };
       };
 
-      function skills() {
-    
-          $('#skills img').each(function(i) {
+      function show_skills() {
+      
+        $skill_images.each(function(i) {
               setTimeout( ()=> {
-                  $('#skills img').eq(i).addClass('pokaz');
+                  $skill_images.eq(i).addClass('pokaz');
+                  setTimeout( ()=>{
+                       $skill_images.eq(i).addClass('set_transition');  
+                  },800 )
               }, 150 * i);
-          });
+          });        
       };
 
-      function opacity() {
+      function show_about_me() {
 
           if(!once_executed){
-            $('#opis').css({'opacity': '1'}, 1800);
+            $('#about_me').addClass('show');
             once_executed = true;
           }; 
       };
@@ -92,10 +94,6 @@ export default function(){
           }, 500);
       };
 
-    
-      ////////////////////START///////////////////////////
-      start();
-      //////////ROTATE OPIS////////////////////////
       $('.rotate').on('click', obrot);
 
       //////////SCROLL EEVENTTS///////////////////////////////
@@ -104,12 +102,16 @@ export default function(){
           var $win_scroll = $(window).scrollTop();
 
           naglowek($win_scroll);
-          if ($win_scroll > 1350){  skills();    };
-          if ($win_scroll > 400) {  opacity();   };    
+          if ($win_scroll > 1250){  
+                show_skills();
+              };
+          if ($win_scroll > 400) {
+                 show_about_me();
+               };    
           if ($win_scroll > 350) {
-              if( !polaroid.hasClass('hide') ) polaroid.addClass('hide');
+              if( !$polaroid.hasClass('hide') ) $polaroid.addClass('hide');
             }else {
-              if(  polaroid.hasClass('hide') ) polaroid.removeClass('hide')
+              if(  $polaroid.hasClass('hide') ) $polaroid.removeClass('hide')
             };
     
       });   
