@@ -1,0 +1,236 @@
+@font-face {
+  font-family: handWrite;
+  src: url("../fonts/Moon Flower Bold.ttf");
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+::selection {
+  background: #fffdaa;
+}
+::-moz-selection {
+  background: #fffdaa;
+}
+mark {
+  background: #fffdaa;
+  letter-spacing: 0.11em;
+}
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 800px;
+  width: 100%;
+  height: 700px;
+  background: linear-gradient(
+      rgba(250, 255, 250, 0.1),
+      rgba(250, 250, 255, 0.3)
+    ),
+    url("/src/images/cali-1280.jpg") no-repeat fixed bottom;
+  background-size: cover;
+}
+header span {
+  display: block;
+  text-align: center;
+}
+header h1 {
+  display: none;
+  font-size: 80px;
+  text-shadow: 0px 2px 3px #444;
+  color: #ff7d96; /* color: #f93ff9;  */
+  margin-top: -75px;
+  margin-bottom: -75px;
+  font-family: "Calibri";
+  -webkit-text-stroke: 1px #a28;
+  -webkit-text-stroke: 1px #222;
+}
+header h2 {
+  position: relative;
+  display: none;
+  margin: 0;
+  transform: skew(-10deg);
+  font-family: "Mr Dafoe", cursive;
+  color: #444;
+  font-size: 400px;
+  font-weight: 400;
+  text-shadow: 1px 1px 0px white, 2px 2px 0px #666666; /*  //text-shadow: 1px 1px 0px #f94cf9, 2px 2px 0px #666666;    */
+}
+header h2:before,
+header h2:after {
+  position: absolute;
+  top: 50%;
+  content: "";
+  width: 15%;
+  height: 3px;
+  background-color: #444;
+  border-bottom: 1px solid white;
+  outline: 1px solid #666;
+}
+header h2:before {
+  left: -5%;
+}
+header h2:after {
+  right: -8%;
+}
+#polaroid {
+  position: fixed;
+  z-index: 100;
+  top: 100px;
+  right: 0px;
+  width: 200px;
+  padding: 13px;
+  background: linear-gradient(to bottom, #faf9f9 80%, #d3cddd);
+  font-family: handWrite;
+  font-weight: 800;
+  font-size: 1.3em;
+  letter-spacing: 0.12em;
+  box-shadow: -3px 4px 5px rgba(70, 40, 40, 0.6); /*   border-bottom: 2px solid rgb(80, 80 , 80);  */
+  transition: 0.7s all;
+  transform-origin: 105% 0;
+  transform: rotate(2.5deg);
+  backface-visibility: hidden;
+}
+#polaroid figure {
+  margin: 0;
+}
+#polaroid address {
+  margin-top: 10px;
+}
+#polaroid address a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.85em;
+}
+#polaroid address a:hover {
+  letter-spacing: 0.1em;
+}
+#polaroid #paper-clip {
+  position: absolute;
+  top: -13px;
+  left: -2px;
+}
+#polaroid #my-photo {
+  width: 100%;
+}
+#polaroid.hide {
+  transform: rotate(-90deg) translateY(100px);
+}
+container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  overflow: hidden;
+  perspective: 1850px;
+  background-color: #f2f4f6;
+  color: #444444;
+  box-shadow: 0px 0px 50px #555;
+  background-image: url("/src/images/egg-shell.png");
+}
+#about_me {
+  opacity: 0;
+  font-size: 1.2em;
+  font-family: Georgia, Serif;
+  text-align: justify;
+  width: 75%;
+  margin: 200px 0 240px 0;
+  column-count: 3;
+  column-gap: 30px;
+  column-rule: dotted 1px #555;
+  transition: all 1.8s;
+  padding: 50px 25px;
+  mix-blend-mode: multiply; /*     p{      background-color: #feee;      mix-blend-mode: none;      opacity:1;      box-shadow: 1px 1px 2px #444;      transform: rotate(1deg);    } */
+}
+#about_me img {
+  display: block;
+  width: 96%;
+  filter: sepia(20%) grayscale(0.3) contrast(1) opacity(0.85); /* box-shadow: 4px 1px 3px 0px #444444; */
+  background-color: #fff; /*  border: 2px solid #888; */
+  transform: rotate3d(0, 0, 1, -1deg);
+  padding: 2.5%;
+}
+#about_me h3 {
+  font-size: 3em;
+  margin: -0.7em 0 0.48em -0.3em;
+  border-left: 12px dotted #888;
+  padding-left: 10px;
+}
+#about_me h4 {
+  font-size: 1.6em;
+  word-wrap: break-word;
+  margin: 0.4em 0 -0.5em 0;
+}
+#about_me .rotation {
+  transform: rotateY(360deg);
+}
+#about_me.show {
+  display: block;
+  opacity: 1;
+}
+#about_me.hide {
+  display: none;
+  opacity: 0;
+}
+#skills {
+  width: 100%;
+  height: 240px;
+  background-color: #add8e6;
+  background-image: url("/src/images/egg-shell.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 400px; /*  box-shadow: 0px 7px 43px#888; */
+}
+#wrap {
+  position: relative;
+  max-width: 1100px;
+  height: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+#wrap img {
+  width: 13%;
+  height: 160px;
+  margin: 2% 1%;
+  opacity: 0;
+  transform: translateX(-150px);
+  transition: all 0.8s;
+  filter: drop-shadow(4px 6px 2px #444) grayscale(30%);
+}
+#wrap img.pokaz {
+  transform: translateX(0);
+  opacity: 1;
+}
+#wrap img.set_transition {
+  transition: all 0.25s;
+}
+#wrap img:hover {
+  filter: drop-shadow(4px 12px 4px #484848) grayscale(15%);
+  backface-visibility: visible;
+  transform: perspective(400px) rotateY(13deg) scale(1.05) translateY(-30px);
+}
+@media only screen and (max-width: 950px) {
+  #about_me {
+    width: 95%;
+    font-size: 1.5em;
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: dotted 1px #555;
+  }
+  #about_me p {
+    line-height: 1.2em;
+  }
+  #about_me img {
+    width: 70%;
+    float: left;
+    padding: 2%;
+    margin: 5px 5% 0 5px;
+  }
+}

@@ -1,52 +1,58 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports= {
-  entry: [
-  /*    "./style/style.css", */
-    "./src/index.js"
-  ],
-  
-  output: {
-    filename: './dist/bundle.js'
+module.exports = {
+  entry: {
+    modern: "./src/index2.js",
+    retro: "./src/index.js"
   },
 
-  devtool: 'source-map',
+  output: {
+    filename: "dist/[name].js"
+  },
+
+  devtool: "source-map",
 
   devServer: {
-    contentBase:  "./"
+    contentBase: "./"
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      filename: "dist/index.html",
+      template: "index.html",
+      chunks: ["retro"]
+    }),
+    new HtmlWebpackPlugin({
+      filename: "dist/index2.html",
+      template: "index2.html",
+      chunks: ["modern"]
     })
   ],
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         include: /src/,
         query: {
-          presets: ['env', 'react']
+          presets: ["env", "react"]
         }
       },
-  
+
       {
         test: /\.(css$|sc?a?ss$)/,
         include: /style/,
         use: ["style-loader", "css-loader", "sass-loader"]
-      }, 
-      { 
-        test: /\.html$/,
-        loader: 'html-loader' 
       },
       {
-         test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf|svg)$/, 
-        loader: 'url-loader?limit=100000' 
+        test: /\.html$/,
+        loader: "html-loader"
+      },
+      {
+        test: /\.(png|jpg|jpeg|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=100000"
       }
-    ] 
-
+    ]
   }
-}
+};

@@ -1,3 +1,5 @@
+import "../style/style.scss";
+
 var screen_text = `Login ...OK!
 <Loading ............ DONE!<80_style.css ....... DONE!
 < Update avalible: modern style<
@@ -21,8 +23,8 @@ export function print() {
   $(".stuk").trigger("play");
   let char_text = screen_text.substring(i, i + 1);
   let char_data = data_text.substring(i, i + 1);
-  if (char_text == "<") char_text = "</br>";
-  if (char_data == "<") char_data = "</br>";
+  if (char_text === "<") char_text = "</br>";
+  if (char_data === "<") char_data = "</br>";
   main_screen.append(char_text);
   data.append(char_data);
   if (i < screen_text.length) {
