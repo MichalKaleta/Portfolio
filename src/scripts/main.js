@@ -1,4 +1,4 @@
-import "../style/style.scss";
+import $ from "jquery";
 
 var screen_text = `Login ...OK!
 <Loading ............ DONE!<80_style.css ....... DONE!

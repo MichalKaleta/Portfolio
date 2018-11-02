@@ -1,32 +1,36 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
+  mode: "development",
   entry: {
-    modern: "./src/index2.js",
-    retro: "./src/index.js"
+    modern: "./modern.js",
+    retro: "./retro.js"
   },
 
   output: {
-    filename: "dist/[name].js"
+    path: path.join(__dirname, "./dist"),
+    filename: "[name].js"
   },
 
   devtool: "source-map",
 
   devServer: {
-    contentBase: "./"
+    //contentBase: path.join(__dirname, "./modern.js")
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "dist/index.html",
-      template: "index.html",
-      chunks: ["retro"]
+      filename: "modern.html",
+      template: "./modern.html",
+      chunks: ["modern"]
     }),
     new HtmlWebpackPlugin({
-      filename: "dist/index2.html",
-      template: "index2.html",
-      chunks: ["modern"]
+      chunks: ["retro"],
+      template: "./retro.html",
+      filename: "index.html"
+      //inject: "body"
     })
   ],
   module: {
@@ -36,13 +40,12 @@ module.exports = {
         loader: "babel-loader",
         include: /src/,
         query: {
-          presets: ["env", "react"]
+          presets: ["@babel/env"]
         }
       },
 
       {
         test: /\.(css$|sc?a?ss$)/,
-        include: /style/,
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {

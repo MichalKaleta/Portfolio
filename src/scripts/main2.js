@@ -1,130 +1,125 @@
-import "../style/style2.scss";
+import $ from "jquery";
 
-export const script = $(document).ready(function() {
-  let $h1 = $("h1");
-  let $h2 = $("h2");
-  let $header = $("header");
-  let photo_right = parseInt($("#photo").css("right"), 10);
-  let h1_font = 0;
-  let h1_margin = parseInt($("header h1").css("margin-top"), 10);
-  let once_executed = false;
+export const script = () =>
+  $(document).ready(function() {
+    var $h1 = $("h1"),
+      $h2 = $("h2"),
+      $polaroid = $("#polaroid"),
+      $skill_images = $("#skills img");
+    var h1_font = 0,
+      h1_margin = parseInt($("header h1").css("margin-top"), 10),
+      once_executed = false;
 
-  $header.fadeIn().css({
-    display: "flex"
-  });
+    /*   $('header').fadeIn().css({
 
-  function start() {
-    $h1.show();
-    $h2.show();
+            display: 'flex'
 
-    if ($(window).width() <= 550) {
-      $h2.animate(
-        {
-          fontSize: "2.5em"
-        },
-        function() {
-          $h2.animate(
-            {
-              fontSize: "58px"
-            },
-            function() {
-              czytaj();
-            }
-          );
-        }
-      );
-    } else {
-      $h2.animate(
-        {
-          fontSize: "5.5em"
-        },
-        function() {
-          $h2.animate(
-            {
-              fontSize: "108px"
-            },
-            function() {
-              czytaj();
-            }
-          );
-        }
-      );
+        }); */
+
+    (function start() {
+      $h1.show();
+      $h2.show();
+
+      if ($(window).width() <= 550) {
+        $h2.animate(
+          {
+            fontSize: "2.5em"
+          },
+          function() {
+            $h2.animate(
+              {
+                fontSize: "58px"
+              },
+              function() {
+                czytaj();
+              }
+            );
+          }
+        );
+      } else {
+        $h2.animate(
+          {
+            fontSize: "5.5em"
+          },
+          function() {
+            $h2.animate(
+              {
+                fontSize: "108px"
+              },
+              function() {
+                czytaj();
+              }
+            );
+          }
+        );
+      }
+    })();
+
+    function czytaj() {
+      h1_font = parseInt($("header h1").css("fontSize"), 10);
+      /*   h2_font = parseInt($('header h2').css('font-size'), 10); */
     }
-  }
 
-  function czytaj() {
-    h1_fobnt = parseInt($("header h1").css("fontSize"), 10);
-    h2_font = parseInt($("header h2").css("font-size"), 10);
-  }
+    function naglowek($win_scroll) {
+      $("header span").css({
+        transform: "translate( 0px  , " + $win_scroll / 2 + "px)"
+      });
 
-  function naglowek($win_scroll) {
-    $("header span").css({
-      transform: "translate( 0px  , " + $win_scroll / 2 + "px)"
-    });
+      $("header span h1").css({
+        fontSize: h1_font - $win_scroll / 16,
+        "margin-top": h1_margin + $win_scroll / 16,
+        "margin-bottom": h1_margin + $win_scroll / 16
+      });
 
-    $("header span h1").css({
-      fontSize: h1_font - $win_scroll / 16,
-      "margin-top": h1_margin + $win_scroll / 16,
-      "margin-bottom": h1_margin + $win_scroll / 16
-    });
+      if ($(window).width() >= 550) {
+        $("header span h2").css({
+          fontSize: " " + 108 - $win_scroll / 10
+        });
+      }
+    }
 
-    if ($(window).width() >= 550) {
-      $("header span h2").css({
-        fontSize: " " + 108 - $win_scroll / 10
+    function show_skills() {
+      $skill_images.each(function(i) {
+        setTimeout(function() {
+          $skill_images.eq(i).addClass("pokaz");
+          setTimeout(function() {
+            $skill_images.eq(i).addClass("set_transition");
+          }, 800);
+        }, 150 * i);
       });
     }
-  }
 
-  function skills() {
-    console.log("skills");
-    $("#skills img").each(function(i) {
+    function show_about_me() {
+      if (!once_executed) {
+        $("#about_me").addClass("show");
+        once_executed = true;
+      }
+    }
+
+    function obrot() {
+      $("#opis").toggleClass("rotation");
       setTimeout(function() {
-        $("#skills img")
-          .eq(i)
-          .addClass("pokaz");
-      }, 150 * i);
+        $("#opis").toggle();
+      }, 500);
+    }
+
+    $(".rotate").on("click", obrot);
+
+    //////////SCROLL EEVENTTS///////////////////////////////
+    $(window).scroll(function() {
+      var $win_scroll = $(window).scrollTop();
+
+      naglowek($win_scroll);
+      if ($win_scroll > 1250) {
+        show_skills();
+      }
+      if ($win_scroll > 400) {
+        show_about_me();
+      }
+      if ($win_scroll > 350) {
+        if (!$polaroid.hasClass("hide")) $polaroid.addClass("hide");
+      } else {
+        if ($polaroid.hasClass("hide")) $polaroid.removeClass("hide");
+      }
     });
-  }
-
-  function opacity() {
-    if (!once_executed) {
-      $(".opis").css({ opacity: "1" }, 1000);
-      once_executed = true;
-    }
-  }
-
-  function obrot() {
-    $(".opis").toggleClass("rotation");
-    setTimeout(function() {
-      $(".opis").toggle();
-    }, 500);
-  }
-  function foto_obrot($win_scroll) {
-    $("#photo").css({
-      transform: "rotate(  -" + ($win_scroll - 350) / 6 + "deg)",
-      right: photo_right - ($win_scroll - 350)
-    });
-  }
-  ////////////////////START///////////////////////////
-  start();
-  //////////ROTATE OPIS////////////////////////
-  $(".rotate").on("click", obrot);
-
-  //////////SCROLL hy-yyyyyyy b34444444444444EVENTTS///////////////////////////////
-  $(window).scroll(function() {
-    var $win_scroll = $(window).scrollTop();
-
-    naglowek($win_scroll);
-
-    if ($win_scroll > 1550) {
-      skills();
-    }
-
-    if ($win_scroll > 400) {
-      opacity();
-    }
-    if ($win_scroll > 350) {
-      foto_obrot($win_scroll);
-    }
   });
-});

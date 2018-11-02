@@ -2,9 +2,10 @@ $primary-color: #339933;
 $bg-color: #000000;
 $font-main: 3.8vw;
 $font-data: 1.6vw;
+
 @font-face {
   font-family: console;
-  src: url("../fonts/Glass_TTY_VT220.ttf");
+  src: url("../src/fonts/Glass_TTY_VT220.ttf");
 }
 
 body {
@@ -101,7 +102,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/src/images/paski.png");
+  background-image: url("../src/images/paski.png");
 }
 .data {
   font-size: $font-data;
