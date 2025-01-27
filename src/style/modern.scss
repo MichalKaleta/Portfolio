@@ -64,9 +64,9 @@ main#modern {
 	}
 	#header-content h2:before,
 	#header-content h2:after {
+		content: "";
 		position: absolute;
 		top: 50%;
-		content: "";
 		width: 15%;
 		height: 3px;
 		background-color: #444;

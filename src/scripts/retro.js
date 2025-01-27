@@ -20,7 +20,8 @@ const elements = {
 	modern: $("#modern"),
 	retro: $("#retro"),
 };
-
+elements.retro.hide();
+elements.modern.show();
 // Initialize audio
 elements.humm.prop("volume", 0.1).trigger("play");
 
@@ -31,7 +32,8 @@ export function animateTerminal(i = 0) {
 	elements.mainScreen.append(processChar(TEXTS.screen[i]));
 	elements.data.append(processChar(TEXTS.data[i]));
 
-	if (i < TEXTS.screen.length) {
+	//if (i < TEXTS.screen.length) {
+	if (false) {
 		setTimeout(() => animateTerminal(++i), 20);
 	} else {
 		elements.mainScreen.append('<span class="cursor">y</span>');
