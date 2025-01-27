@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portfolio</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes"
+		/>
+		<meta name="description" content="Front End Portfolio" />
+		<meta name="author" content="Michał Kaleta" />
+		<meta name="keywords" content="frontend, front-end , web developer" />
+		<link rel="preload" href="/src/images/paski.png" as="image" />
+		<link rel="preload" href="/src/images/cali-1280.jpg" as="image" />
+		<link rel="preload" href="/src/images/egg-shell.png" as="image" />
+		<script type="module" src="./index.js" defer></script>
+	</head>
+
+	<body>
+		<main id="retro">
+			<audio id="stuk-sound" class="stuk">
+				<source
+					src="/src/sounds/keyboard_tap.mp3"
+					type="audio/mpeg"
+					preload="auto"
+				/>
+			</audio>
+
+			<audio id="blip-sound" class="blip">
+				<source
+					src="/src/sounds/pull_grenade_pin.mp3"
+					type="audio/mpeg"
+					preload="auto"
+				/>
+			</audio>
+
+			<audio id="humm-sound" class="humm" loop preload>
+				<source
+					src="/src/sounds/earcing2.mp3"
+					type="audio/mpeg"
+					preload="auto"
+				/>
+				Your browser does not support the audio element.
+			</audio>
+
+			<div class="container">
+				<div class="console">
+					<div id="main-screen" class="main-screen"></div>
+					<div class ='photo-wraper'>
+						<figure>
+							<img id="my-photo" src="/src/images/foto.jpg" />
+						</figure>
+						<div id ='overlay'></div>
+					</div>
+					<div id="data-section" class="data"></div>
+				</div>
+			</div>
+		</main>
+		<main id="modern" style="display: none">
+			<header id="modern-header">
+				<span id="header-content">
+					<h1>MICHAŁ KALETA</h1>
+					<h2>Front-End</h2>
+					<h1>PORTFOLIO</h1>
+				</span>
+			</header>
+
+			<div id="polaroid">
+				<img
+					id="paper-clip"
+					src="/src/images/clip2.png"
+					alt="paper clip"
+				/>
+				<figure>
+					<img
+						id="my-photo"
+						src="/src/images/ja_v.jpg"
+						alt="my photo"
+					/>
+				</figure>
+				<figcaption>
+					<address>
+						#: 696 471 251<br />
+						<a href="mailto:mic.kaleta@gmail.com">
+							<span>@: mic.kaleta@gmail.com</span>
+						</a>
+					</address>
+				</figcaption>
+			</div>
+
+			<div class="about_me about_me__container">
+				<article class="about_me__article" class="english">
+					<h3>About<br />Me</h3>
+					<section>
+						<p>
+							&emsp;&emsp;&emsp;I am a novice web developer. Until
+							now I have been self emplyed in different fields,
+							like import, trade and distribution of clothing.
+							<img
+								src="/src/images/doswiadczenie-270.jpg"
+								alt="experience"
+							/>
+							Currently I run a transport company, managing a
+							fleet of vehicles with drivers and forwarding
+							international freight. As part of these activities I
+							have gained a lot of practical skills like
+							bookkeeping and a number of so-called soft skills,
+							on which I will not brag about :)
+						</p>
+						<p>
+							But what really interests me is The Internet. More
+							and more areas of life have thier own virtual
+							dimensions, or even move completly to the web. So it
+							is necessary to build tools by which the network
+							operations will become simple and natural. Through
+							the fascination of this process I see my future in
+							creating fornt end interfaces.
+						</p>
+					</section>
+
+					<section>
+						<h4>Skills</h4>
+						<p>
+							I learned <mark>HTML and CSS</mark> solidly and
+							still explore their nouances and capabilities. I am
+							revising my code, tracking techniques, which are
+							used by experienced developers. I know and adapt
+							<mark>RWD</mark> paradigm, also with use of
+							<mark>Bootstrap</mark>
+							<img
+								src="/src/images/szkola-270.jpg"
+								alt="school"
+							/>
+							however i prefer writing my own grids with methods
+							like e.g. flex-boxes, media queries and relative
+							units. For animation, dynamically adding DOM
+							elements I use the
+							<mark>jQuery</mark> library and pure
+							<mark>JavaScript</mark>. Because of the abundance of
+							tools and capabilities of latter I'm learning
+							object-oriented programming in this language. To
+							optimize my work I use <mark>Sass</mark> and
+							<mark>Grunt</mark>. If necessary, I can, of course,
+							base my workflow on LESS and GULP.
+							<img
+								src="/src/images/jezyk-270.jpg"
+								alt="language"
+							/>
+							I speak English, got FCE in highschool and since
+							then greatly improved. I also speak German, which
+							however requires a little revision. I am currently
+							learning Italian.
+						</p>
+					</section>
+
+					<section>
+						<h4>Interests</h4>
+						<p>
+							Italian cuisine, electronics, sketching, good
+							movies, bad movies
+						</p>
+					</section>
+				</article>
+			</div>
+				<section id="skills">
+					<div id="wrap">
+						<img src="/src/images/html-5.svg" alt="HTML5" />
+						<img src="/src/images/css-3.svg" alt="CSS3" />
+						<img src="/src/images/js.svg" alt="JavaScript" />
+						<img src="/src/images/react.svg" alt="React" />
+						<img src="/src/images/redux.svg" alt="Redux" />
+						<img src="/src/images/nodejs.svg" alt="NodeJS" />
+						<img src="/src/images/webpack.svg" alt="Webpack" />
+						<img src="/src/images/jquery.svg" alt="jQuery" />
+						<img src="/src/images/sass.svg" alt="Sass" />
+						<img src="/src/images/grunt.svg" alt="Grunt" />
+						<img src="/src/images/git-icon.svg" alt="Git" />
+						<img src="/src/images/bootstrap.svg" alt="Bootstrap" />
+					</div>
+				</section>
+				<section id="projects"></section>
+			</div>
+		</main>
+	</body>
+</html>
