@@ -23,10 +23,10 @@ const elements = {
 elements.retro.hide();
 elements.modern.show();
 // Initialize audio
-elements.humm.prop("volume", 0.1).trigger("play");
+//elements.humm.prop("volume", 0.1).trigger("play");
 
 export function animateTerminal(i = 0) {
-	$("#stuk-sound").trigger("play");
+	//$("#stuk-sound").trigger("play");
 
 	const processChar = (char) => (char === "<" ? "</br>" : char);
 	elements.mainScreen.append(processChar(TEXTS.screen[i]));

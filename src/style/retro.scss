@@ -3,14 +3,19 @@ $bg-color: #000000;
 $font-main: 3.8vw;
 $font-data: 1.6vw;
 $scanlines-bg: url("../src/images/paski.png");
-
 @font-face {
 	font-family: console;
 	src: url("../src/fonts/Glass_TTY_VT220.ttf") format("truetype");
 }
+
 body {
 	margin: 0;
 	padding: 0;
+	font-size: 16px;
+	width: 100%;
+	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 main#retro {

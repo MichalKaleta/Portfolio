@@ -1,91 +1,66 @@
 import $ from "jquery";
 
+const win = $(window);
+const winHeight = window.innerHeight;
+const $polaroid = $("#polaroid");
+const $skillImages = $("#skills img");
+const skillHeight = $skillImages.height();
+const skillFromTop = $("#skills").offset().top - winHeight * 1.1 + skillHeight;
+const $footnotesEl = $(".update.update__footnote");
+const stickyNotesTexts = "asdf";
+const $stickyNoteEl = $(
+	`<div class='update__sticky-wraper' style='position: absolute'>
+		<div class='update__sticky-shadow'></div>
+			<div class='update__sticky-note'>
+				${stickyNotesTexts}
+			</div>	
+	</div>`
+);
+
+const footNotesTexts = ["experienced", "lala", "la", "adf", "asdf", "fad"];
+let skillIsShown = false;
+let polaroidIsShown = false;
+
 export const modernPart = () => {
-	const elements = {
-		h1: $("#modern-header h1"),
-		h2: $("#modern-header h2"),
-		polaroid: $("#polaroid"),
-		skillImages: $("#skills img"),
-		header: {
-			h1Font: 0,
-			h1Margin: parseInt($("#modern-header h1").css("margin-top"), 10),
-		},
-	};
+	$(function () {
+		const $stickyEl = $(".update.update__sticky");
+		const [width, height] = [$stickyEl.width(), $stickyEl.height()];
+		const offseet = $stickyEl.offset();
 
-	let isExecuted = false;
-
-	const init = () => {
-		elements.h1.show();
-		elements.h2.show();
-
-		const targetSize =
-			$(window).width() <= 550
-				? { initial: "2.5em", final: "58px" }
-				: { initial: "5.5em", final: "108px" };
-
-		elements.h2
-			.animate({ fontSize: targetSize.initial })
-			.animate({ fontSize: targetSize.final }, updateH1Font);
-	};
-
-	const updateH1Font = () => {
-		elements.header.h1Font = parseInt($("header h1").css("fontSize"), 10);
-	};
-
-	const updateHeader = (scrollPos) => {
-		const headerSpan = $("#header-content");
-		headerSpan.css({
-			transform: `translate(0px, ${scrollPos / 2}px)`,
+		$stickyNoteEl.offset(offseet);
+		$stickyNoteEl.css({ width, height });
+		$("#modern").append($stickyNoteEl);
+		$footnotesEl.each(function (i) {
+			$(this).append(
+				`<p class='update__footnote-text'> ${footNotesTexts[i]} </p>`
+			);
 		});
 
-		$("#modern-header h1").css({
-			fontSize: elements.header.h1Font - scrollPos / 16,
-			marginTop: elements.header.h1Margin + scrollPos / 16,
-			marginBottom: elements.header.h1Margin + scrollPos / 16,
-		});
-
-		if ($(window).width() >= 550) {
-			$("#modern-header h2").css({
-				fontSize: `${108 - scrollPos / 10}px`,
+		function showSkills() {
+			$skillImages.each((i) => {
+				setTimeout(() => {
+					$skillImages.eq(i).addClass("show");
+					setTimeout(() => {
+						$skillImages.eq(i).addClass("new_transition");
+					}, 800);
+				}, 150 * i);
 			});
-		}
-	};
-
-	const showSkills = () => {
-		elements.skillImages.each((i, el) => {
-			setTimeout(() => {
-				$(el)
-					.addClass("pokaz")
-					.delay(800)
-					.queue(() => $(el).addClass("set_transition").dequeue());
-			}, 150 * i);
-		});
-	};
-
-	const toggleDescription = () => {
-		$("#opis")
-			.toggleClass("rotation")
-			.delay(500)
-			.queue(function () {
-				$(this).toggle().dequeue();
-			});
-	};
-
-	// Event Listeners
-	$(".rotate").on("click", toggleDescription);
-
-	$(window).on("scroll", () => {
-		const scrollPos = $(window).scrollTop();
-		updateHeader(scrollPos);
-
-		if (scrollPos > 1250) showSkills();
-		if (scrollPos > 400 && !isExecuted) {
-			$(".about_me__container").addClass("about_me__container--show");
-			isExecuted = true;
+			skillIsShown = true;
 		}
 
-		elements.polaroid.toggleClass("hide", scrollPos > 350);
+		win.on("scroll", () => {
+			const fromTop = win.scrollTop();
+
+			if (polaroidIsShown && fromTop > winHeight * 0.8) {
+				$polaroid.addClass("hide");
+				polaroidIsShown = false;
+			} else if (!polaroidIsShown && fromTop <= 0.8 * winHeight) {
+				$polaroid.removeClass("hide");
+				polaroidIsShown = true;
+			}
+			if (!skillIsShown && fromTop >= skillFromTop) {
+				showSkills();
+			}
+		});
 	});
-
-	init();
 };
