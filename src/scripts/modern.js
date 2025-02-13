@@ -7,17 +7,18 @@ const $skillImages = $("#skills img");
 const skillHeight = $skillImages.height();
 const skillFromTop = $("#skills").offset().top - winHeight * 1.1 + skillHeight;
 const $footnotesEl = $(".update.update__footnote");
-const stickyNotesTexts = "asdf";
-const $stickyNoteEl = $(
-	`<div class='update__sticky-wraper' style='position: absolute'>
-		<div class='update__sticky-shadow'></div>
-			<div class='update__sticky-note'>
-				${stickyNotesTexts}
-			</div>	
-	</div>`
-);
+const stickyNotesTexts =
+	"From corporations and software houses I moved to techaing (Roblox with LUA & Python), freelance work and developing my own app";
 
-const footNotesTexts = ["experienced", "lala", "la", "adf", "asdf", "fad"];
+const footNotesTexts = [
+	"experienced",
+	"",
+	"fullstack apps",
+	"can write",
+	"react",
+	"vite  ",
+	"",
+];
 let skillIsShown = false;
 let polaroidIsShown = false;
 
@@ -27,12 +28,20 @@ export const modernPart = () => {
 		const [width, height] = [$stickyEl.width(), $stickyEl.height()];
 		const offseet = $stickyEl.offset();
 
+		const $stickyNoteEl = $(
+			`<div class='update__sticky-wraper' style='position: absolute'>
+				<div class='update__sticky-shadow'></div>
+					<div class='update__sticky-note' style='height: ${height}px'>
+						${stickyNotesTexts}
+					</div>	
+			</div>`
+		);
 		$stickyNoteEl.offset(offseet);
 		$stickyNoteEl.css({ width, height });
 		$("#modern").append($stickyNoteEl);
 		$footnotesEl.each(function (i) {
 			$(this).append(
-				`<p class='update__footnote-text'> ${footNotesTexts[i]} </p>`
+				`<p class='update__footnote-text'> <mark>${footNotesTexts[i]}</mark> </p>`
 			);
 		});
 

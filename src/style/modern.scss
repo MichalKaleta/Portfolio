@@ -178,7 +178,6 @@ main#modern {
 		column-count: 1;
 		column-gap: 30px;
 		column-rule: dotted 1px #555;
-		//transition: opacity 1.8s;
 		mix-blend-mode: multiply;
 		@include bp-small {
 			column-count: 2;
@@ -224,29 +223,26 @@ main#modern {
 	.update {
 		position: relative;
 		text-decoration-color: #d22222;
-
-		$angle: 3deg;
-		$to_center: 0px;
-		$to_top: 3px;
-		$horizontal: 0px;
-		$vertical: 0px;
-		$blur: 12px;
-		$spread: 5px;
-
 		&__footnote-text {
 			position: absolute;
 			font-family: handWrite;
+			text-transform: lowercase;
 			margin: 0;
-			top: -20px;
+			top: -10px;
 			left: -5px;
-			color: #d22222;
-			font-size: 30px;
-			font-weight: bolder;
+			color: #d21111;
+			font-size: 2rem;
+			font-weight: 600;
 			transform: skew(-20deg) rotateZ(-4deg);
+			background: transparent;
+			mark {
+				color: #d21111;
+				background: #fffdaa99;
+				//background: transparent;
+			}
 		}
 
 		&__sticky-wraper {
-			display: flex;
 			width: 100%;
 			font-weight: bolder;
 			align-items: center;
@@ -261,22 +257,31 @@ main#modern {
 			justify-content: center;
 			font-family: handWrite;
 			font-size: 30px;
+			padding: 0.5rem;
 			color: #d22222;
-			transform: rotate(1deg);
-			background: linear-gradient(to top, #eed, #f6f6aa);
+			background: linear-gradient(to bottom, #ee7, #f6f6aa);
 			box-shadow: 0px 0px 1px 0px #333;
 		}
 		&__sticky-shadow {
 			position: absolute;
 			width: 100%;
+			bottom: -1rem;
+			$to_bottom: 6px;
+			$to_center: 30px;
+			$angle: 3deg;
+			$angle_right: 5deg;
+			$to_top: 3px;
+			$horizontal: 0px;
+			$vertical: 0px;
+			$blur: 12px;
+			$spread: 5px;
 
-			bottom: 0;
 			&::before,
 			&::after {
 				content: "";
 				position: absolute;
-				width: 40%;
-				bottom: 0;
+				width: 50%;
+				bottom: $to_bottom;
 			}
 			&::before {
 				left: $to_center;
@@ -286,7 +291,7 @@ main#modern {
 			&::after {
 				right: $to_center;
 				box-shadow: -$horizontal $vertical $blur $spread #333;
-				transform: rotate($angle);
+				transform: rotate($angle_right);
 			}
 		}
 	}
@@ -298,7 +303,6 @@ main#modern {
 		background-image: url("/src/images/egg-shell.png");
 		display: flex;
 		justify-content: center;
-
 		margin-bottom: $section-gap;
 
 		&__sticker-wrapper {
