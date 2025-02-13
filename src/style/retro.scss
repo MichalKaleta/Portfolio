@@ -1,6 +1,6 @@
 $primary-color: #339933;
 $bg-color: #000000;
-$font-main: 3.8vw;
+$font-main: 3.7vw;
 $font-data: 1.6vw;
 $scanlines-bg: url("../src/images/paski.png");
 @font-face {
@@ -47,13 +47,13 @@ main#retro {
 		color: $primary-color;
 		border: 1px dotted $primary-color;
 		background-color: $bg-color;
-		box-shadow: inset 0px 0px 25px 0px $primary-color;
-		border-radius: 2px;
-		padding: 30px;
-		transform: scale(0.025, 0.025);
+		border-radius: 6px;
+		padding: 45px;
+		box-shadow: inset 0px 0px 82px -34px $primary-color;
 		transform-origin: 0 0;
-		animation: blink 0.4s 0s linear forwards,
-			appear 0.5s 0.4s linear forwards;
+		transform: scale(0.025, 0.025);
+		animation: blink 0.1s 0s linear forwards, appear 0.5s 0.4s linear forwards,
+			flick2 1s 0s infinite;
 
 		&__header {
 			text-align: center;
@@ -71,7 +71,7 @@ main#retro {
 	}
 
 	.main-screen {
-		align-self: center;
+		align-self: flex-end;
 		grid-row-start: 1;
 		grid-row-end: 3;
 		font-size: $font-main;
@@ -146,7 +146,7 @@ main#retro {
 	}
 
 	@keyframes appear {
-		50% {
+		0% {
 			transform: scale(1, 0.005);
 		}
 		100% {
@@ -169,7 +169,23 @@ main#retro {
 		}
 	}
 
+	@keyframes flick2 {
+		0% {
+			opacity: 0.75;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0.75;
+		}
+	}
+
 	@keyframes photo_appear {
+		0% {
+			transform: translateY(110%);
+			width: 100%;
+		}
 		100% {
 			transform: translateY(0);
 		}
